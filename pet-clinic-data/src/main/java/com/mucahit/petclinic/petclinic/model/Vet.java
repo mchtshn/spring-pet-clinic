@@ -3,6 +3,7 @@ package com.mucahit.petclinic.petclinic.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Getter
@@ -12,5 +13,5 @@ public class Vet extends Person {
     private String address;
     private String city;
     private String telephone;
-    private Set<Specialty> specialties;
+    private Set<Specialty> specialties = new HashSet<>();
 }

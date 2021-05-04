@@ -2,16 +2,16 @@ package com.mucahit.petclinic.petclinic.services.map;
 
 import com.mucahit.petclinic.petclinic.model.Owner;
 import com.mucahit.petclinic.petclinic.model.Pet;
-import com.mucahit.petclinic.petclinic.model.PetType;
 import com.mucahit.petclinic.petclinic.services.OwnerService;
 import com.mucahit.petclinic.petclinic.services.PetService;
 import com.mucahit.petclinic.petclinic.services.PetTypeService;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
 import java.util.Set;
 
 @Service
+@Profile({"map","default"})
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetService petService;
@@ -51,8 +51,8 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                         throw new RuntimeException("Pet type is required");
                     }
 
-                    if (pet.getId() ==null){
-                        Pet  savedPet =petService.save(pet);
+                    if (pet.getId() == null) {
+                        Pet savedPet = petService.save(pet);
                         pet.setId(savedPet.getId());
                     }
                 });
